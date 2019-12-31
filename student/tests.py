@@ -30,8 +30,17 @@ class StudentTestCase(TestCase):
         self.assertEqual(student.sex_show, '男', '内容错误')
 
     def test_filter(self):
-        students = Student.objects.filter(name='test')
-        self.assertEqual(students.count(), 1, 'only one is right')
+        Student.objects.create(
+            name = 'hgp',
+            sex = 1,
+            email='hgp@qq.com',
+            profession='程序员',
+            qq='3333',
+            phone='33242',
+        )
+        name = 'the5fire'
+        students = Student.objects.filter(name='name')
+        self.assertEqual(students.count(), 1, 'only one is right{}'.format(name))
 
     def test_get_index(self):
         client = Client()
